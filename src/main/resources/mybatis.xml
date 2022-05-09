@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    mybatis配置文件有读写顺序-->
+    <typeAliases>
+        <package name="org.example.domain"/>
+    </typeAliases>
+    <mappers>
+        <package name="org.example.dao"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dao.WorkDao">
+<insert id="addWork">
+insert into work(wname,depID,wperson,start,end) values (#{wname},#{depID},#{wperson},#{start},#{end})
+</insert>
+<select id="selectWork" resultType="org.example.domain.Work">
+    select * from work order by start
+</select>
+<select id="selectOneWork" resultType="org.example.domain.Work">
+    select * from work where wid=#{wid}
+</select>
+    <update id="updateWork">
+        update work set wname=#{wname},depID=#{depID},wperson=#{wperson},start=#{start},end=#{end} where wid=#{wid}
+    </update>
+    <delete id="deleteWork">
+        delete from work where wid=#{wid}
+    </delete>
+    <select id="selectApproval" resultType="org.example.domain.Work">
+        select * from work where status=0
+    </select>
+    <update id="updateStatus">
+        update work set status=1 where wid=#{wid}
+    </update>
+</mapper>

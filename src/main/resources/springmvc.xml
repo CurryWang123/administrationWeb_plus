@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--声明组件扫描器-->
+    <context:component-scan base-package="org.example.controller"/>
+
+    <!--    声明视图解析器，帮助开发人员设置视图路径-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix" value="/student/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--    拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/student/login.do"/>
+            <mvc:exclude-mapping path="/student/cancel.do"/>
+            <bean class="org.example.handler.LoginHandler"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--    注册注解驱动-->
+    <mvc:annotation-driven/>
+</beans>

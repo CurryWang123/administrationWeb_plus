@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dao.CompetitionDao">
+<select id="select" resultType="org.example.domain.Competition">
+    select * from competition order by date
+</select>
+    <select id="selectOneCompetition" resultType="org.example.domain.Competition">
+        select * from competition where cid=#{cid}
+    </select>
+    <delete id="deleteCompetition">
+        delete from competition where cid=#{cid}
+    </delete>
+    <insert id="addCompetition">
+        insert into competition(sname,type,date) values (#{sname},#{type},#{date})
+    </insert>
+    <update id="updateCompetition">
+        update competition set sname=#{sname},type=#{type},date=#{date} where cid=#{cid}
+    </update>
+    <select id="selectOneByName" resultType="org.example.domain.Competition">
+        select sname,type,date from competition where sname=#{sname}
+    </select>
+
+
+
+
+</mapper>
